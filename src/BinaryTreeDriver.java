@@ -176,12 +176,12 @@ public class BinaryTreeDriver {
 
 
         System.out.println("Creating random tree...");
-        BinaryTree<String> tree4 = new BinaryTree<>();
-        tree4 = tree4.createRandomTree(NAMES);
+        BinaryTree<String> random = new BinaryTree<>();
+        random = random.createRandomTree(NAMES);
         System.out.println("Done.");
         System.out.println();
 
         System.out.println("Printing tree4 using postorder traversal...");
-        tree4.printPostorder();
+        random.printPostorder();
     }
 }
