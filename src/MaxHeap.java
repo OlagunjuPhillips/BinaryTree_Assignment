@@ -93,8 +93,7 @@ public class MaxHeap {
     public void print()
     {
         for (int i = 1; i <= size / 2; i++) {
-            System.out.print(" PARENT : " + Heap[i] + " LEFT CHILD : " +
-                    Heap[2 * i] + " RIGHT CHILD :" + Heap[2 * i + 1]);
+            System.out.print(Heap[i] + " ");
             System.out.println();
         }
     }
@@ -117,5 +116,13 @@ public class MaxHeap {
             return search(findKey, leftChild(index)) || search(findKey, rightChild(index));
         }
         return false;
+    }
+
+    public int kthLargest(int k){
+        int value = 0;
+        for(int i = 0; i < k; i++){
+            value = this.extractMax();
+        }
+        return value;
     }
 }

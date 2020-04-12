@@ -15,12 +15,13 @@ public class BinaryTreeDriver {
         tree1.root.left.left = new Node(4);
         System.out.println("Printing tree1 using preorder traversal...");
         tree1.printPreorder();
+
         System.out.println();
         System.out.println("Done.");
         System.out.println();
 
         System.out.println("Checking if tree1 is full...");
-        if(tree1.isFull(tree1.root)){
+        if(tree1.isFull()){
             System.out.println("tree1 is full");
         }else{
             System.out.println("tree1 is not full");
@@ -28,7 +29,7 @@ public class BinaryTreeDriver {
         System.out.println();
 
         System.out.println("Checking if tree1 is complete...");
-        if(tree1.isComplete(tree1.root, 0, tree1.countNumberOfNodes(tree1.root))){
+        if(tree1.isComplete(0, tree1.countNumberOfNodes())){
             System.out.println("tree1 is complete.");
         }else{
             System.out.println("tree1 is not complete.");
@@ -36,7 +37,7 @@ public class BinaryTreeDriver {
         System.out.println();
 
         System.out.println("Checking if tree1 is degenerate...");
-        if(tree1.isDegenerate(tree1.root)){
+        if(tree1.isDegenerate()){
             System.out.println("tree1 is degenerate.");
         }else{
             System.out.println("tree1 is not degenerate.");
@@ -44,7 +45,7 @@ public class BinaryTreeDriver {
         System.out.println();
 
         System.out.println("Checking if tree1 is perfect...");
-        if(tree1.isPerfect(tree1.root)){
+        if(tree1.isPerfect()){
             System.out.println("tree1 is perfect.");
         }else{
             System.out.println("tree1 is not perfect.");
@@ -52,7 +53,7 @@ public class BinaryTreeDriver {
         System.out.println();
 
         System.out.println("Checking if tree1 is balanced...");
-        if(tree1.isBalanced(tree1.root)){
+        if(tree1.isBalanced()){
             System.out.println("tree1 is balanced.");
         }else{
             System.out.println("tree1 is not balanced.");
@@ -79,8 +80,9 @@ public class BinaryTreeDriver {
         System.out.println("Done.");
         System.out.println();
 
+
         System.out.println("Checking if tree2 is full...");
-        if(tree2.isFull(tree2.root)){
+        if(tree2.isFull()){
             System.out.println("tree2 is full");
         }else{
             System.out.println("tree2 is not full");
@@ -88,7 +90,7 @@ public class BinaryTreeDriver {
         System.out.println();
 
         System.out.println("Checking if tree2 is complete...");
-        if(tree2.isComplete(tree2.root, 0, tree2.countNumberOfNodes(tree2.root))){
+        if(tree2.isComplete(0, tree2.countNumberOfNodes())){
             System.out.println("tree2 is complete.");
         }else{
             System.out.println("tree2 is not complete.");
@@ -96,7 +98,7 @@ public class BinaryTreeDriver {
         System.out.println();
 
         System.out.println("Checking if tree2 is degenerate...");
-        if(tree2.isDegenerate(tree2.root)){
+        if(tree2.isDegenerate()){
             System.out.println("tree2 is degenerate.");
         }else{
             System.out.println("tree2 is not degenerate.");
@@ -104,7 +106,7 @@ public class BinaryTreeDriver {
         System.out.println();
 
         System.out.println("Checking if tree2 is perfect...");
-        if(tree2.isPerfect(tree2.root)){
+        if(tree2.isPerfect()){
             System.out.println("tree2 is perfect.");
         }else{
             System.out.println("tree2 is not perfect.");
@@ -112,7 +114,7 @@ public class BinaryTreeDriver {
         System.out.println();
 
         System.out.println("Checking if tree2 is balanced...");
-        if(tree2.isBalanced(tree2.root)){
+        if(tree2.isBalanced()){
             System.out.println("tree2 is balanced.");
         }else{
             System.out.println("tree2 is not balanced.");
@@ -136,7 +138,7 @@ public class BinaryTreeDriver {
         System.out.println();
 
         System.out.println("Checking if tree3 is full...");
-        if(tree3.isFull(tree3.root)){
+        if(tree3.isFull()){
             System.out.println("tree3 is full");
         }else{
             System.out.println("tree3 is not full");
@@ -144,7 +146,7 @@ public class BinaryTreeDriver {
         System.out.println();
 
         System.out.println("Checking if tree3 is complete...");
-        if(tree3.isComplete(tree3.root, 0, tree3.countNumberOfNodes(tree3.root))){
+        if(tree3.isComplete(0, tree3.countNumberOfNodes())){
             System.out.println("tree3 is complete.");
         }else{
             System.out.println("tree3 is not complete.");
@@ -152,7 +154,7 @@ public class BinaryTreeDriver {
         System.out.println();
 
         System.out.println("Checking if tree3 is degenerate...");
-        if(tree3.isDegenerate(tree3.root)){
+        if(tree3.isDegenerate()){
             System.out.println("tree3 is degenerate.");
         }else{
             System.out.println("tree3 is not degenerate.");
@@ -160,7 +162,7 @@ public class BinaryTreeDriver {
         System.out.println();
 
         System.out.println("Checking if tree3 is perfect...");
-        if(tree3.isPerfect(tree3.root)){
+        if(tree3.isPerfect()){
             System.out.println("tree3 is perfect.");
         }else{
             System.out.println("tree3 is not perfect.");
@@ -168,7 +170,7 @@ public class BinaryTreeDriver {
         System.out.println();
 
         System.out.println("Checking if tree3 is balanced...");
-        if(tree3.isBalanced(tree3.root)){
+        if(tree3.isBalanced()){
             System.out.println("tree3 is balanced.");
         }else{
             System.out.println("tree3 is not balanced.");

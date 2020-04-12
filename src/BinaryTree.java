@@ -6,7 +6,8 @@ import java.util.Random;
 public class BinaryTree<Type> {
     Node root;
 
-    BinaryTree(Type key){
+
+    BinaryTree (Type key){
         root = new Node(key);
     }
 
@@ -14,142 +15,169 @@ public class BinaryTree<Type> {
         root = null;
     }
 
-
-    public void preorder(Node node){
-        if(node != null){
-            System.out.print(node.key +" ");
-
-            preorder(node.left);
-
-            preorder(node.right);
-        }
-    }
-
     public void printPreorder(){
-        preorder(this.root);
-    }
+        if(root != null){
+            System.out.print(root.key +" ");
 
+            BinaryTree<Type> leftSubtree = new BinaryTree<>();
+            leftSubtree.root = root.left;
 
-    public void inorder(Node node){
-        if(node != null){
-            inorder(node.left);
+            leftSubtree.printPreorder();
 
-            System.out.print(node.key + " ");
-
-            inorder(node.right);
+            BinaryTree<Type> rightSubtree = new BinaryTree<>();
+            rightSubtree.root = root.right;
+            rightSubtree.printPreorder();
         }
     }
+
 
     public void printInorder(){
-        inorder(this.root);
-    }
+        if(root != null){
+            BinaryTree<Type> leftSubtree = new BinaryTree<>();
+            leftSubtree.root = root.left;
+            leftSubtree.printInorder();
 
-    public void postorder(Node node){
-        if(node != null){
-            postorder(node.left);
+            System.out.print(root.key + " ");
 
-            postorder(node.right);
-
-            System.out.print(node.key + " ");
+            BinaryTree<Type> rightSubtree = new BinaryTree<>();
+            rightSubtree.root = root.right;
+            rightSubtree.printInorder();
         }
     }
-
     public void printPostorder(){
-        postorder(this.root);
+        if(root != null){
+            BinaryTree<Type> leftSubtree = new BinaryTree<>();
+            leftSubtree.root = root.left;
+            leftSubtree.printPostorder();
+
+            BinaryTree<Type> rightSubtree = new BinaryTree<>();
+            rightSubtree.root = root.right;
+            rightSubtree.printPostorder();
+
+            System.out.print(root.key + " ");
+        }
     }
 
-    public boolean isFull(Node node){
-        if(node == null){
+
+    public boolean isFull(){
+
+
+
+        if(root == null){
             return true;
         }
-        if(node.right == null && node.right == null){
+        if(root.right == null && root.right == null){
             return true;
         }
-        if(node.right != null && node.left != null){
-            return isFull(node.right) && isFull(node.right);
+        if(root.right != null && root.left != null){
+            BinaryTree<Type> leftSubtree = new BinaryTree<>();
+            leftSubtree.root = root.left;
+            BinaryTree<Type> rightSubtree = new BinaryTree<>();
+            rightSubtree.root = root.right;
+            return leftSubtree.isFull() && rightSubtree.isFull();
         }
         return false;
     }
 
-    public int countNumberOfNodes(Node node){
-        if(node == null){
+    public int countNumberOfNodes(){
+
+        if(root == null){
             return 0;
         }
-        return 1 + countNumberOfNodes(node.left) + countNumberOfNodes(node.right);
+        BinaryTree<Type> leftSubtree = new BinaryTree<>();
+        leftSubtree.root = root.left;
+        BinaryTree<Type> rightSubtree = new BinaryTree<>();
+        rightSubtree.root = root.right;
+        return 1 + leftSubtree.countNumberOfNodes() + rightSubtree.countNumberOfNodes();
     }
 
-    public boolean isComplete(Node node, int index, int numberOfNodes){
-        if(node == null){
+    public boolean isComplete(int index, int numberOfNodes){
+        if(root == null){
             return true;
         }
         if(index >= numberOfNodes){
             return false;
         }
-
-        return isComplete(node.left, 2 *(index + 1), numberOfNodes) &&
-                isComplete(node.right, 2 *(index + 2), numberOfNodes);
+        BinaryTree<Type> leftSubtree = new BinaryTree<>();
+        leftSubtree.root = root.left;
+        BinaryTree<Type> rightSubtree = new BinaryTree<>();
+        rightSubtree.root = root.right;
+        return leftSubtree.isComplete(2 *(index + 1), numberOfNodes) &&
+                rightSubtree.isComplete(2 *(index + 2), numberOfNodes);
     }
 
-    public boolean isDegenerate(Node node){
-        if(node.left == null){
+    public boolean isDegenerate(){
+        if(root.left == null){
             return true;
         }
-        if(node.right == null){
+        if(root.right == null){
             return true;
         }
         return false;
     }
 
-    public int findDepth(Node node){
+    public int findDepth(){
         int depth = 0;
-        while(node != null){
+        while(root != null){
             depth++;
-            node = node.left;
+            root = root.left;
         }
         return depth;
     }
 
-    public boolean checkIsPerfect(Node node, int depth, int level){
+    public boolean checkIsPerfect(int depth, int level){
         if(root == null){
             return true;
         }
 
-        if(node.left == null && node.right == null){
+        if(root.left == null && root.right == null){
             return (depth == level+1);
         }
 
-        if(node.left == null || node.right == null){
+        if(root.left == null || root.right == null){
             return false;
         }
 
-        return checkIsPerfect(node.left, depth, level+1) && checkIsPerfect(node.right, depth, level+1);
+        BinaryTree<Type> leftSubtree = new BinaryTree<>();
+        leftSubtree.root = root.left;
+        BinaryTree<Type> rightSubtree = new BinaryTree<>();
+        rightSubtree.root = root.right;
+        return leftSubtree.checkIsPerfect(depth, level+1) && rightSubtree.checkIsPerfect(depth, level+1);
     }
 
-    public boolean isPerfect(Node node){
-        int height = findDepth(node);
-        return checkIsPerfect(node, height, 0);
+    public boolean isPerfect(){
+        int height = findDepth();
+        return checkIsPerfect(height, 0);
     }
 
-    public int height(Node node){
-        if(node == null){
+    public int height(){
+        if(root == null){
             return 0;
         }
 
-        return 1 + Math.max(height(node.left), height(node.right));
+        BinaryTree<Type> leftSubtree = new BinaryTree<>();
+        leftSubtree.root = root.left;
+        BinaryTree<Type> rightSubtree = new BinaryTree<>();
+        rightSubtree.root = root.right;
+        return 1 + Math.max(leftSubtree.height(), rightSubtree.height());
     }
 
-    public boolean isBalanced(Node node){
+    public boolean isBalanced(){
         int leftHeight = 0;
         int rightHeight = 0;
 
-        if(node == null){
+        if(root == null){
             return true;
         }
 
-        leftHeight = height(node.left);
-        rightHeight = height(node.right);
+        BinaryTree<Type> leftSubtree = new BinaryTree<>();
+        leftSubtree.root = root.left;
+        BinaryTree<Type> rightSubtree = new BinaryTree<>();
+        rightSubtree.root = root.right;
+        leftHeight = leftSubtree.height();
+        rightHeight = rightSubtree.height();
 
-        if(Math.abs(leftHeight - rightHeight) == 1  && isBalanced(node.left) && isBalanced(node.right)){
+        if(Math.abs(leftHeight - rightHeight) == 1  && leftSubtree.isBalanced() && rightSubtree.isBalanced()){
             return true;
         }
         return false;

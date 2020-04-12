@@ -37,18 +37,18 @@ public class BinarySearchTree {
         root = insertRec(root, key);
     }
 
-    public void postorder(Node node){
+    public void inorder(Node node){
         if(node != null){
-            postorder(node.left);
-
-            postorder(node.right);
+            inorder(node.left);
 
             System.out.print(node.key + " ");
+
+            inorder(node.right);
         }
     }
 
-    public void printPostorder(){
-        postorder(this.root);
+    public void printInorder(){
+        inorder(root);
     }
 
     public int sumInt(Node node){
@@ -74,6 +74,31 @@ public class BinarySearchTree {
 
     public int search(int findKey){
         return  searchKey(this.root, findKey);
+    }
+
+    public int largest(){
+        int largest = 0;
+        while(root.right != null){
+            root = root.right;
+        }
+        largest = root.key;
+        return largest;
+    }
+
+    public ArrayList<Integer> values(Node node, ArrayList<Integer> value){
+        if(node != null){
+            values(node.right, value);
+
+            value.add(node.key);
+
+            values(node.left, value);
+        }
+        return value;
+    }
+
+    public int nthLargest(int n){
+        ArrayList<Integer> value = new ArrayList<>();
+        return values(root, value).get(n - 1);
     }
 
 

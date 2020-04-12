@@ -1,28 +1,28 @@
 public class BinaryHeapDriver {
     public static void main(String[] args) {
-        int[] heapl = {4, 1, 2, 3};
-        MinHeap heap = new MinHeap(5);
+        System.out.println("Binary Heap Program.");
 
-        for(int node : heapl){
-            heap.insert(node);
-        }
-
-        heap.print();
-        System.out.println();
-
+        System.out.println("Creating tree7...");
         int[] heap2l = {3, 1, 2, 4, 10, 8, 9, 7, 6, 5};
-        MaxHeap heap2 = new MaxHeap(11);
-
+        MaxHeap tree7 = new MaxHeap(11);
         for(int node : heap2l){
-            heap2.insert(node);
+            tree7.insert(node);
         }
-        heap2.print();
+        System.out.println("Done.");
+
+        System.out.println("Checking that nth greatest value method exists...");
+        tree7.print();
+        System.out.println("5th greatest value of tree7 is " + tree7.kthLargest(5));
 
 
-        System.out.println(heap2.search(6, 1));
+        System.out.println("Checking that search method exists...");
+        System.out.println("Searching tree for key 6...");
+        System.out.println(tree7.search(6, 1));
+        System.out.println("Searching tree for key 11...");
+        System.out.println(tree7.search(11, 1));
 
+        System.out.println("Checking that sort method exists...");
         int[] unnsorted = {3, 1, 2, 4, 10, 8, 9, 7, 6, 5};
-
         unnsorted = sort(unnsorted);
         for (int value : unnsorted) {
             System.out.println(value);
@@ -31,15 +31,16 @@ public class BinaryHeapDriver {
 
     static int[] sort(int[] nums){
         int[] sorted = new int[nums.length];
-        MaxHeap sort = new MaxHeap(nums.length + 1);
+        MaxHeap sort = new MaxHeap(nums.length);
         for(int num : nums){
             sort.insert(num);
-            sort.print();
-            System.out.println();
         }
 
         for(int i = 0; i < sort.size(); i++){
             sorted[i] = sort.extractMax();
+            sort.print();
+            System.out.println();
+
         }
         return sorted;
     }
